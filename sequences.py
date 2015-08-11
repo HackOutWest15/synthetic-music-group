@@ -5,19 +5,19 @@ from midi import events
 
 pygame.init()
 pygame.mixer.init()
-C3= pygame.mixer.Sound("Sounds/C4.wav")
+C4= pygame.mixer.Sound("Sounds/Glaspling/C5.wav")
 C3= pygame.mixer.Sound("Sounds/C3.wav")
 C3s = pygame.mixer.Sound("Sounds/C#.wav")
 D3 = pygame.mixer.Sound("Sounds/D3.wav")
 D3s = pygame.mixer.Sound("Sounds/D#.wav")
-E3 = pygame.mixer.Sound("Sounds/E.wav")
-F3 = pygame.mixer.Sound("Sounds/F3.wav")
-F3s = pygame.mixer.Sound("Sounds/F#.wav")
-G3 = pygame.mixer.Sound("Sounds/G3.wav")
-G3s = pygame.mixer.Sound("Sounds/g3#.wav")
-A3 = pygame.mixer.Sound("Sounds/A3.wav")
-A3s = pygame.mixer.Sound("Sounds/A3#.wav")
-B3 = pygame.mixer.Sound("Sounds/B3.wav")
+E3 = pygame.mixer.Sound("Sounds/Glaspling/E4.wav")
+F3 = pygame.mixer.Sound("Sounds/Glaspling/F4.wav")
+F3s = pygame.mixer.Sound("Sounds/Glaspling/F4#.wav")
+G3 = pygame.mixer.Sound("Sounds/Glaspling/G4.wav")
+G3s = pygame.mixer.Sound("Sounds/Glaspling/g4#.wav")
+A3 = pygame.mixer.Sound("Sounds/Glaspling/A4.wav")
+A3s = pygame.mixer.Sound("Sounds/Glaspling/A4#.wav")
+B3 = pygame.mixer.Sound("Sounds/Glaspling/B4.wav")
 C2= pygame.mixer.Sound("Sounds/C2.wav")
 C2s = pygame.mixer.Sound("Sounds/C2#.wav")
 D2 = pygame.mixer.Sound("Sounds/D2.wav")
@@ -44,7 +44,7 @@ pib = midi.read_midifile("Paint_It_Black.mid")
 
 clk = Clock()
 
-track = pib[5]
+track = pib[0]
 ticks = 0
 
 def next_noteonevent(current):
