@@ -83,12 +83,14 @@ def play(data):
 while True:
     ms_passed = (clk.tick()*1.3)
 
-    for index, tick in enumerate(ticks):    	
-    	ticks[index] = tick - ms_passed
+    for index, tick in enumerate(ticks):    
+    	newtick = tick - ms_passed	
+    	ticks[index] = newtick
 
     	#print '.'
-    	if tick <= 0:
+    	if newtick<= 0:
 	        play(events[index].data)
 	        idx = next_noteonevent(idxs[index]+1, tracks[index])
 	        events[index] = tracks[index][idx]
 	        ticks[index] = events[index].tick
+	        idxs[index] = idx
