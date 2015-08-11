@@ -70,6 +70,7 @@ ticks = []
 for event in events:
 	ticks.append(event.tick) 
 
+
 #data = event.data
 #data = []
 #for event in events:
@@ -98,4 +99,5 @@ while True:
 	        idx = next_noteonevent(idxs[index]+1, tracks[index])
 	        events[index] = tracks[index][idx]
 	        ticks[index] = events[index].tick
+
 	        idxs[index] = idx
