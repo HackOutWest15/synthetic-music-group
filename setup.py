@@ -1,3 +1,3 @@
 from setuptools import setup
 
-setup(install_requires=['pyechonest'])
+setup(install_requires=['pyechonest','pygame'])
