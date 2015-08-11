@@ -49,19 +49,31 @@ pib = midi.read_midifile("Paint_It_Black.mid")
 
 clk = Clock()
 
-track = pib[0]
-ticks = 0
+#track = pib[1]
+tracks = [pib[0], pib[1], pib[2], pib[3], pib[4]]
+#ticks = 0
 
-def next_noteonevent(current):
-    if isinstance(track[current], midi.NoteOnEvent):
+
+def next_noteonevent(current, pib_list):
+    if isinstance(pib_list[current], midi.NoteOnEvent):
         return current
     else:
-        return next_noteonevent(current+1)
+        return next_noteonevent(current+1, pib_list)
 
-idx = next_noteonevent(0)
-event = track[idx]
-ticks = event.tick
-data = event.data
+idxs = [next_noteonevent(0, tracks[0]), next_noteonevent(0, tracks[1]), next_noteonevent(0, tracks[2]), next_noteonevent(0, tracks[3]), next_noteonevent(0, tracks[4])]
+
+#event = track[idx]
+events = [tracks[0][idxs[0]], tracks[1][idxs[1]], tracks[2][idxs[2]], tracks[3][idxs[3]], tracks[4][idxs[4]]]
+
+#ticks = event.tick
+ticks = []
+for event in events:
+	ticks.append(event.tick) 
+
+#data = event.data
+#data = []
+#for event in events:
+#	data.append(event.data)
 
 dict = {'41': F1, '42': F1s, '43': G1, '44': G1s, '45': A1, '46':A1s,'47':B1,'48':C2, '49':C2s, '50':D2, '51':D2s, '52': E2, '53': F2, '54': F2s, '55': G2, '56': G2s, '57': A2, '58':A2s,'59':B2,'60':C3, '61':C3s, '62':D3, '63':D3s, '64': E3, '65': F3, '66': F3s, '67': G3, '68': G3s, '69': A3, '70':A3s,'71':B3,'72':C4,'73':C4s,'74':D4,'75':D4s,'76':E4,'77':F4};
 
@@ -76,13 +88,14 @@ def play(data):
 while True:
     ms_passed = (clk.tick()*1.3)
 
-    ticks = ticks - ms_passed
+    for index, tick in enumerate(ticks):    
+    	newtick = tick - ms_passed	
+    	ticks[index] = newtick
 
-    #print '.',
-
-    if ticks <= 0:
-        play(event.data)
-        idx = next_noteonevent(idx+1)
-        event = track[idx]
-        ticks = event.tick
-        data = event.data
+    	#print '.'
+    	if newtick<= 0:
+	        play(events[index].data)
+	        idx = next_noteonevent(idxs[index]+1, tracks[index])
+	        events[index] = tracks[index][idx]
+	        ticks[index] = events[index].tick
+	        idxs[index] = idx
