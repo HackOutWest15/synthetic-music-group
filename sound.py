@@ -1,4 +1,3 @@
-
 import pygame
 import time
 import read_json
