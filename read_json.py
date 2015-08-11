@@ -18,7 +18,8 @@ def get_duration_highest_pitch():
 		data = json.load(data_file)
 		segments = data["segments"]
 		for segment in segments:
-			segment_list.append((segment["start"],segment["duration"], segment["pitches"].index(1.0)))
+			if segment["loudness_max"] > -25:
+				segment_list.append((segment["start"],segment["duration"], segment["pitches"].index(1.0)))
 
 	#pprint(segment_list)
 	return segment_list
@@ -28,5 +29,7 @@ def get_duration_real_tones():
 	newlist = []
 	for tuple in get_duration_highest_pitch():
 		newlist.append((tuple[0], tuple[1], tonelist[tuple[2]]))
-	#pprint(newlist)
+	pprint(newlist)
 	return newlist
+
+get_duration_real_tones();
