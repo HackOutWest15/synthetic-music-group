@@ -6,6 +6,11 @@ from midi import events
 
 pygame.init()
 pygame.mixer.init()
+F4= pygame.mixer.Sound("Sounds/Glaspling/F5.wav")
+E4= pygame.mixer.Sound("Sounds/Glaspling/E5.wav")
+D4s= pygame.mixer.Sound("Sounds/Glaspling/D5#.wav")
+D4= pygame.mixer.Sound("Sounds/Glaspling/D5.wav")
+C4s= pygame.mixer.Sound("Sounds/Glaspling/C5#.wav")
 C4= pygame.mixer.Sound("Sounds/Glaspling/C5.wav")
 C3= pygame.mixer.Sound("Sounds/C3.wav")
 C3s = pygame.mixer.Sound("Sounds/C#.wav")
@@ -76,11 +81,7 @@ ticks = []
 for event in events:
 	ticks.append(event.tick) 
 
-print "Ticks: "
-print ticks
-
-
-dict = {'41': F1, '42': F1s, '43': G1, '44': G1s, '45': A1, '46':A1s,'47':B1,'48':C2, '49':C2s, '50':D2, '51':D2s, '52': E2, '53': F2, '54': F2s, '55': G2, '56': G2s, '57': A2, '58':A2s,'59':B2,'60':C3, '61':C3s, '62':D3, '63':D3s, '64': E3, '65': F3, '66': F3s, '67': G3, '68': G3s, '69': A3, '70':A3s,'71':B3,'72':C4};
+dict = {'41': F1, '42': F1s, '43': G1, '44': G1s, '45': A1, '46':A1s,'47':B1,'48':C2, '49':C2s, '50':D2, '51':D2s, '52': E2, '53': F2, '54': F2s, '55': G2, '56': G2s, '57': A2, '58':A2s,'59':B2,'60':C3, '61':C3s, '62':D3, '63':D3s, '64': E3, '65': F3, '66': F3s, '67': G3, '68': G3s, '69': A3, '70':A3s,'71':B3,'72':C4,'73':C4s,'74':D4,'75':D4s,'76':E4,'77':F4};
 
 
 def play(data):
@@ -103,4 +104,5 @@ while True:
 	        idx = next_noteonevent(idxs[index]+1, tracks[index])
 	        events[index] = tracks[index][idx]
 	        ticks[index] = events[index].tick
+
 	        idxs[index] = idx
