@@ -35,6 +35,7 @@ def main():
     from plingpling import Glaspling
     pling = Glaspling()
     from random_sounds import Random
+    random = Random()
     from beats import Trummor
     beats = Trummor()
 
