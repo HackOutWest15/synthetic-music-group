@@ -4,6 +4,7 @@ import pygame
 from pygame.time import Clock
 from midi import events
 
+
 def play(event, playfun):
     if isinstance(event, midi.NoteOnEvent) and event.data[1] != 0:
         print "START " + str(event.data[0])
@@ -36,12 +37,14 @@ def main():
     from random_sounds import Random
     random = Random()
 
+
     sounds = {'random': random, 'all': allnotes, 'pling': pling}
 
     if len(sys.argv) <= 4:
         print "Usage: python sequences.py midi_file track1 sound1 track2 sound2 ..."
         print "  available sounds: " + str(sounds.keys())
         sys.exit(1)
+
 
     midi_file = sys.argv[1]
     our_tracks = sys.argv[2::2]
