@@ -32,23 +32,38 @@ def main():
 
     from all_notes import AllNotes
     allnotes = AllNotes()
+    from plingpling import Glaspling
+    pling = Glaspling()
+    from random_sounds import Random
+    random = Random()
 
-    song = midi.read_midifile("Paint_It_Black2.mid")
+
+    sounds = {'random': random, 'all': allnotes, 'pling': pling}
+
+    if len(sys.argv) <= 4:
+        print "Usage: python sequences.py midi_file track1 sound1 track2 sound2 ..."
+        print "  available sounds: " + str(sounds.keys())
+        sys.exit(1)
+
+
+    midi_file = sys.argv[1]
+    our_tracks = sys.argv[2::2]
+    our_sounds = sys.argv[3::2]
+
+    song = midi.read_midifile(midi_file)
     clk = Clock()
-
-    our_tracks = [int(x) for x in sys.argv[1:]]
-
     all_we_need = []
 
-    for track_id in our_tracks:
-        track = song[track_id]
+    for (tid,soundname) in zip(our_tracks, our_sounds):
+        track = song[int(tid)]
         event = track[0]
         tick = event.tick
+        sound = sounds.get(soundname, pling)
         all_we_need.append({'track': track,
                             'event_idx': 0,
                             'event': event,
                             'ticks_left': tick,
-                            'play': allnotes.play})
+                            'play': sound.play})
 
     while True:
         ticks_passed = (clk.tick()*1.3)
