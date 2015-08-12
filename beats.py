@@ -2,7 +2,7 @@ import pygame
 
 class Trummor:
     def __init__(self):
-        
+
         bass = pygame.mixer.Sound("Sounds/Trummor/bass-2.wav")
         closed = pygame.mixer.Sound("Sounds/Trummor/closedhat-1.wav")
         cough = pygame.mixer.Sound("Sounds/Trummor/cough.wav")
@@ -12,4 +12,5 @@ class Trummor:
         self.notes = {'35': bass, '85': kick, '40': snare, '44': kick, '45': closed, '49':snare};
 
     def play(self,note):
-        self.notes[str(note)].play()
+        sound = self.notes.get(str(note), self.notes['35'])
+        sound.play()
