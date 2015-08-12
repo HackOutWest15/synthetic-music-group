@@ -40,7 +40,7 @@ def main():
 
     sounds = {'random': random, 'all': allnotes, 'pling': pling}
 
-    if len(sys.argv) <= 4:
+    if len(sys.argv) < 4:
         print "Usage: python sequences.py midi_file track1 sound1 track2 sound2 ..."
         print "  available sounds: " + str(sounds.keys())
         sys.exit(1)
