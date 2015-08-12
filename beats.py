@@ -12,5 +12,6 @@ class Trummor:
         self.notes = {'35': bass, '85': kick, '40': snare, '44': kick, '45': closed, '49':snare};
 
     def play(self,note):
-        sound = self.notes.get(str(note), self.notes['35'])
+        sound = self.notes.get(str(note), self.notes['40'])
+
         sound.play()
