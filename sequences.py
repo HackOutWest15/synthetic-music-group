@@ -35,12 +35,13 @@ def main():
     from plingpling import Glaspling
     pling = Glaspling()
     from random_sounds import Random
-    random = Random()
+    from beats import Trummor
+    beats = Trummor()
 
 
-    sounds = {'random': random, 'all': allnotes, 'pling': pling}
+    sounds = {'random': random, 'all': allnotes, 'pling': pling, 'trummor':beats}
 
-    if len(sys.argv) <= 4:
+    if len(sys.argv) < 4:
         print "Usage: python sequences.py midi_file track1 sound1 track2 sound2 ..."
         print "  available sounds: " + str(sounds.keys())
         sys.exit(1)
