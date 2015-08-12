@@ -49,8 +49,9 @@ def main():
 
 
     midi_file = sys.argv[1]
-    our_tracks = sys.argv[2::2]
-    our_sounds = sys.argv[3::2]
+    tempo = float(sys.argv[2])
+    our_tracks = sys.argv[3::2]
+    our_sounds = sys.argv[4::2]
 
     song = midi.read_midifile(midi_file)
     clk = Clock()
@@ -68,7 +69,7 @@ def main():
                             'play': sound.play})
 
     while True:
-        ticks_passed = (clk.tick()*1.3)
+        ticks_passed = (clk.tick() * tempo)
 
         if len(all_we_need) == 0:
             break
