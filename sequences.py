@@ -31,6 +31,8 @@ def main():
 
     from all_notes import AllNotes
     allnotes = AllNotes()
+    from plingpling import Glaspling
+    pling = Glaspling()
 
     song = midi.read_midifile("Paint_It_Black.mid")
     clk = Clock()
@@ -47,7 +49,7 @@ def main():
                             'event_idx': 0,
                             'event': event,
                             'ticks_left': tick,
-                            'play': allnotes.play})
+                            'play': pling.play})
 
     while True:
         ticks_passed = (clk.tick()*1.3)
